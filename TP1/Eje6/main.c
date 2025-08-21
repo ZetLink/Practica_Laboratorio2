@@ -10,6 +10,14 @@ int main(int argc, char *argv[]) {
 						{21,77,3}};	
 	int vg=0;
 	
+//  Carga
+//  for(i=0; i<N; i++){
+//      for(j=0; j<N; j++){
+//          scanf("%d", &ventas[i][j]);
+//      }
+//      printf("\n");
+//  }
+
 	for(int i=0; i<N; i++){
 		int vpp=0;
 		for(int j=0; j<N; j++){
