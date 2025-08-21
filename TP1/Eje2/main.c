@@ -4,16 +4,18 @@
 int main(int argc, char *argv[]) {
 	
 	int a,b,c;
+	float promedio;
 	
-	printf("Ingrese primer numero: ");
 	scanf("%d", &a);
-	printf("\nIngrese segundo numero: ");
 	scanf("%d", &b);
-	printf("\nIngrese tercer numero: ");
 	scanf("%d", &c);
-	
-	float promedio = ((float)(a) + (float)(b) + (float)(c))/3;
-	printf("\nEl promedio es: %.2f", promedio);
-	
+
+	if(a < 0 || b < 0 || c < 0){
+        printf("Error: todos los valores deben ser enteros positivos");
+    } else {
+        promedio = ((float)(a) + (float)(b) + (float)(c))/3;
+        printf("El promedio es: %.2f\n", promedio);
+    }
+
 	return 0;
 }
