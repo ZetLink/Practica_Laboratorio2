@@ -13,15 +13,15 @@ int main(int argc, char *argv[]) {
 	bool b = false;
 	
 	printf("Ingrese la cadena: ");
-	scanf("%s", cadena);
-	ptr_c=&cadena;
+	fgets(cadena, sizeof(cadena), stdin);
+	cadena[strcspn(cadena,"\n")] = '\0'; //Busca el caracter '\n' cuando lo encuentra lo remplaza por '\0', para eliminar el salto de linea que guarda fgets al final de la cadena
 	
-	int i=0;
-	while((cadena[i] != '\0') && (b == false)){ //Recorrer la cadena para verificar si existen valores no numericos
-		if(isalpha(cadena[i])){
+	ptr_c=&cadena[0];
+	while((*ptr_c != '\0') && (b == false)){ //Recorrer la cadena para verificar si existen valores no numericos
+		if(isalpha(*ptr_c)){
 			b = true;
 		}
-		i++;
+		ptr_c++;
 	}
 	
 	if(b){
@@ -32,19 +32,22 @@ int main(int argc, char *argv[]) {
 		int *ptr_edc;
 		ptr_edc=&enteroDesdeChar;
 		
-		i=0;
-		int longitud = strlen(ptr_c); //Determinar la longitud de la cantidad de caracteres numericos tiene la cadena
-		while(i < longitud){
-			*ptr_edc = (*ptr_edc * 10) + (ptr_c[i] - '0');
+		int i=0; //Cuenta la cantidad de numeros que tiene la cadena
+		ptr_c=&cadena[0];
+		while(*ptr_c != '\0'){
+			//printf("Valor: %d | Valor Restando 0: %d\n", *ptr_c, *ptr_c - '0');
+			*ptr_edc = (*ptr_edc * 10) + (*ptr_c - '0'); //*ptr_c - '0': Al representarse como entero se obtiene su valor ASCII, si se le resta el valor 0 en ASCII obtenemos el valor del numero buscado
+			ptr_c++;
 			i++;
 		}
 		
 		printf("Numero original: %d\n", *ptr_edc);
 		printf("Doble del numero: %d\n", (*ptr_edc)*2);
+		ptr_c--; //Vuelve al ultimo numero de la cadena
 		printf("Numero invertido: ");
-		i=longitud-1; //Colocar 'i' en el ultimo numero de la cadena
-		while(i >= 0){ //Recorrer de forma inversa la cadena numerica
-			printf("%c", ptr_c[i]);
+		while(i > 0){ //Recorrer de forma inversa la cadena numerica
+			printf("%c", *ptr_c);
+			ptr_c--;
 			i--;
 		}
 	}
