@@ -1,3 +1,10 @@
 *.exe
 *.o
 *.win
+*.class
+*.xml
+*.properties
+*.mf
+/**/**/nbproject/
+/**/**/build/
+/**/**/test/
