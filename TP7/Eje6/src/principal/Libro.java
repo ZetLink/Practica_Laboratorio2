@@ -13,45 +13,61 @@ public class Libro {
 
     public Libro() {
     }
+    
+    Scanner sc = new Scanner(System.in);
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    private void setTitulo() {
+        String sAux = "";
+        do{
+            System.out.print("Titulo: ");
+            sAux = sc.nextLine();
+            if(sAux.equals("")){
+                System.out.println("Error: No se permite un String vacio.");
+            }
+        }while(sAux.equals(""));
+        this.titulo = sAux;
     }
 
     public String getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
+    private void setAutor() {
+        String sAux = "";
+        do{
+            System.out.print("Autor: ");
+            sAux = sc.nextLine();
+            if(sAux.equals("")){
+                System.out.println("Error: No se permite un String vacio.");
+            }
+        }while(sAux.equals(""));
+        this.autor = sAux;
     }
 
     public int getAnioPublicacion() {
         return anioPublicacion;
     }
 
-    public void setAnioPublicacion(int anioPublicacion) {
-        this.anioPublicacion = anioPublicacion;
+    private void setAnioPublicacion() {
+        int iAux = -1;
+        do{
+            System.out.print("Año de Publicacion: ");
+            iAux = sc.nextInt();
+            if(iAux <= 0){
+                System.out.println("Error: Error: Ingrese un numero mayor a 0");
+            }
+        }while(iAux <= 0);
+        this.anioPublicacion = iAux;
     }
     
     public void cargarLibro(){
-        Scanner sc = new Scanner(System.in);
-        do{
-            System.out.print("Titulo: ");
-            setTitulo(sc.nextLine());
-        }while(getTitulo().equals(""));
-        do{
-            System.out.print("Autor: ");
-            setAutor(sc.nextLine());
-        }while(getAutor().equals(""));
-        do{
-            System.out.print("Año de Publicacion: ");
-            setAnioPublicacion(sc.nextInt());
-        }while(getAnioPublicacion() <= 0);
+            setTitulo();
+            setAutor();
+            setAnioPublicacion();
     }
     
     public void mostrarLibro(){

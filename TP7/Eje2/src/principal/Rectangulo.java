@@ -12,33 +12,44 @@ public class Rectangulo {
 
     public Rectangulo() {
     }
+    
+    Scanner sc = new Scanner(System.in);
 
     public double getBase() {
         return base;
     }
 
-    public void setBase(double base) {
-        this.base = base;
+    private void setBase() {
+        double dAux = -1;
+        do{
+            System.out.print("Base: ");
+            dAux = sc.nextDouble();
+            if(dAux <= 0){
+                System.out.println("Error: Ingrese un numero mayor a 0.");
+            }
+        }while(dAux <= 0);
+        this.base = dAux;
     }
 
     public double getAltura() {
         return altura;
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
+    private void setAltura() {
+        double dAux = -1;
+        do{
+            System.out.print("Altura: ");
+            dAux = sc.nextDouble();
+            if(dAux <= 0){
+                System.out.println("Error: Ingrese un numero mayor a 0.");
+            }
+        }while(dAux <= 0);
+        this.altura = dAux;
     }
     
     public void cargarRectangulo(){
-        Scanner sc = new Scanner(System.in);
-        do{
-            System.out.print("Base: ");
-            setBase(sc.nextDouble());
-        }while(getBase() <= 0);
-        do{
-            System.out.print("Altura: ");
-            setAltura(sc.nextDouble());
-        }while(getAltura() <= 0);
+        setBase();
+        setAltura();
     }
     
     public void mostrarRectangulo(){

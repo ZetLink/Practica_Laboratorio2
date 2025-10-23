@@ -4,8 +4,6 @@ package principal;
  * Alumno: Rojas Ulises Martin
  */
 
-import java.util.Scanner;
-
 public class Principal {
     
     public static void main(String[] args) {

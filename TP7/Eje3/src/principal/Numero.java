@@ -16,14 +16,21 @@ public class Numero {
         return valor;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
+    private void setValor() {
+        Scanner sc = new Scanner(System.in);
+        int iAux = -1;
+        do{
+            System.out.print("Valor del Numero: ");
+            iAux = sc.nextInt();
+            if(iAux <= 0){
+                System.out.println("Error: Ingrese un numero mayor a 0.");
+            }
+        }while(iAux <= 0);
+        this.valor = iAux;
     }
     
     public void cargarNumero(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Valor del Numero: ");
-        setValor(sc.nextInt());
+        setValor();
     }
     
     public int sumar(int num){

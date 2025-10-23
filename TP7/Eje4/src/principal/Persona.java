@@ -17,31 +17,43 @@ public class Persona {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    Scanner sc = new Scanner(System.in);
+    
+    private void setNombre() {
+        String sAux = "";
+        do{
+            System.out.print("Nombre: ");
+            sAux = sc.nextLine();
+            if(sAux.equals("")){
+                System.out.println("Error: No se permite un String vacio.");
+            }
+        }while(sAux.equals(""));
+        this.nombre = sAux;
     }
 
     public int getAnioNacimiento() {
         return anioNacimiento;
     }
 
-    public void setAnioNacimiento(int anioNacimiento) {
-        this.anioNacimiento = anioNacimiento;
+    private void setAnioNacimiento() {
+        int iAux = -1;
+        do{
+            System.out.print("Año de Nacimiento: ");
+            iAux = sc.nextInt();
+            if(iAux <= 0){
+                System.out.println("Error: Ingrese un numero mayor a 0.");
+            }
+        }while(iAux <= 0);
+        this.anioNacimiento = iAux;
     }
     
     public void cargarPersona(){
-        Scanner sc = new Scanner(System.in);
-        do{
-            System.out.print("Nombre: ");
-            setNombre(sc.nextLine());
-        }while(getNombre().equals(""));
-        do{
-            System.out.print("Año de Nacimiento: ");
-            setAnioNacimiento(sc.nextInt());
-        }while(getAnioNacimiento() <= 0);
+        setNombre();
+        setAnioNacimiento();
     }
     
     public void mostrarPersona(){
-        System.out.printf("Nombre: %s ... Edad: %d años\n", getNombre(), getAnioNacimiento());
+        final int ANIO = 2025;
+        System.out.printf("Nombre: %s ... Edad: %d años\n", getNombre(), ANIO - getAnioNacimiento());
     }
 }

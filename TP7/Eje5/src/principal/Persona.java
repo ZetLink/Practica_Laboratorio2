@@ -12,33 +12,44 @@ public class Persona {
 
     public Persona() {
     }
+    
+    Scanner sc = new Scanner(System.in);
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    private void setNombre() {
+        String sAux = "";
+        do{
+            System.out.print("Nombre: ");
+            sAux = sc.nextLine();
+            if(sAux.equals("")){
+                System.out.println("Error: No se permite un String vacio.");
+            }
+        }while(sAux.equals(""));
+        this.nombre = sAux;
     }
 
     public int getAnioNacimiento() {
         return anioNacimiento;
     }
 
-    public void setAnioNacimiento(int anioNacimiento) {
-        this.anioNacimiento = anioNacimiento;
+    private void setAnioNacimiento() {
+        int iAux = -1;
+        do{
+            System.out.print("Año de Nacimiento: ");
+            iAux = sc.nextInt();
+            if(iAux <= 0){
+                System.out.println("Error: Ingrese un numero mayor a 1.");
+            }
+        }while(iAux <= 0);
+        this.anioNacimiento = iAux;
     }
     
     public void cargarPersona(){
-        Scanner sc = new Scanner(System.in);
-        do{
-            System.out.print("Nombre: ");
-            setNombre(sc.nextLine());
-        }while(getNombre().equals(""));
-        do{
-            System.out.print("Año de Nacimiento: ");
-            setAnioNacimiento(sc.nextInt());
-        }while(getAnioNacimiento() <= 0);
+        setNombre();
+        setAnioNacimiento();
     }
     
     public void mostrarPersona(){
