@@ -62,6 +62,7 @@ public class Cuenta {
         
         Scanner sc = new Scanner(System.in);
         
+        //----- Cuenta 1 -----
         System.out.println("---Cuenta 1---");
         String sAux = "";
         do{
@@ -71,25 +72,19 @@ public class Cuenta {
         Cuenta c1 = new Cuenta(sAux);
         double dAux = -1;
         do{
-            System.out.print("Cantidad de dinero a ingresar: ");
+            System.out.print("Cantidad de dinero inicial: ");
             dAux = Double.parseDouble(sc.nextLine());
-        }while(dAux <= 0);
+        }while(dAux < 0);
         c1.setCantidad(dAux);
         c1.mostrar();
-        
-        System.out.println("---Cuenta 2---");
-        sAux = "";
-        do{
-            System.out.print("Nombre del Titular: ");
-            sAux = sc.nextLine();
-        }while(sAux.equals(""));
-        dAux = -1;
-        do{
-            System.out.print("Cantidad de dinero a ingresar: ");
-            dAux = Double.parseDouble(sc.nextLine());
-        }while(dAux <= 0);
-        Cuenta c2 = new Cuenta(sAux, dAux);
-        c2.mostrar();
+        System.out.print("Cantidad de dinero a ingresar: ");
+        dAux = Double.parseDouble(sc.nextLine());
+        c1.ingresar(dAux);
+        c1.mostrar();
+        System.out.print("Cantidad de dinero a retirar: ");
+        dAux = Double.parseDouble(sc.nextLine());
+        c1.retirar(dAux);
+        c1.mostrar();
     }
 
 }
